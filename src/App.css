@@ -1,0 +1,344 @@
+/* === App-level layout (pair with globals in index.css) === */
+
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;           /* was 3rem -> tighter vertical rhythm */
+  width: 100%;
+  padding: 1.25rem 1rem; /* was 2rem top; reduce global padding */
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: var(--color-bg);
+  z-index: 1000;
+  padding: 1rem 0; /* slim header */
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+header .container h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header .container p {
+  margin: 0.3rem 0 0 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: var(--color-bg);
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 -1px 6px rgba(0,0,0,0.15);
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+/* Main content container */
+main.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+  padding-top: 2rem;
+}
+
+/* Optional logos */
+.logo {
+  height: 6rem;
+  padding: 1.5rem;
+  transition: filter 0.3s;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2rem var(--color-primary-hover));
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2rem #61dafbaa);
+}
+
+/* Logo spin animation (kept respectful of reduced motion) */
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* ===== UX PASS: headings with accent underline ===== */
+
+section h2 {
+  margin-bottom: 1.25rem;   /* was 2rem */
+  font-size: 1.9rem;        /* subtle tweak for balance */
+  text-align: center;
+  position: relative;
+  letter-spacing: 0.3px;
+}
+section h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 56px;              /* was 64px */
+  margin: 8px auto 0;       /* was 10px */
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-start, #646cff), var(--accent-end, #535bf2));
+}
+
+
+/* ===== About Section (two-column on desktop) ===== */
+
+.about {
+  text-align: left;
+  max-width: 1000px;
+  margin: 0.5rem auto 1.5rem;  /* tighter */
+  line-height: 1.6;
+}
+.about p { margin-bottom: 0.8rem; }
+
+
+.contact-info p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.contact-info a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.contact-info a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ONLY make About two-column if you add class 'two-col' in JSX */
+@media (min-width: 992px) {
+  .about.container.two-col {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;  /* slightly gentler ratio */
+    align-items: start;
+    gap: 1.5rem;
+  }
+}
+
+/* Optional decorative visual block for About */
+.about-visual {
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  background:
+    radial-gradient(80% 120% at 0% 0%, color-mix(in srgb, var(--accent-start, #646cff) 18%, transparent) 0%, transparent 60%),
+    radial-gradient(100% 140% at 100% 100%, color-mix(in srgb, var(--accent-end, #535bf2) 22%, transparent) 0%, transparent 60%),
+    var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+/* ===== Projects Grid & Cards ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;            /* was 1.5rem */
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;      /* enables stacking context */
+  z-index: 0;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.25rem;        /* was 1.5rem */
+  box-sizing: border-box;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-2px);  /* was -4px (reduced to avoid “overlap look”) */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-color: color-mix(in srgb, var(--color-primary) 28%, var(--color-card-border));
+  z-index: 1;                   /* hover card draws over neighbors without clipping */
+}
+
+.card h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+.card p  { font-size: 0.95rem; margin-bottom: 0.9rem; }
+
+.card a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.card a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ===== Button system for project links ===== */
+
+.project-links {
+  display: flex;
+  gap: 0.6rem;           /* was 0.75rem */
+  flex-wrap: wrap;
+  margin-top: 0.25rem;   /* was 0.5rem */
+}
+
+.btn {                   /* keep styles; just a compact padding */
+  border-radius: 10px;
+  padding: 0.48rem 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 120ms ease, box-shadow 160ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  border: 1px solid var(--color-card-border);
+}
+.btn:hover { transform: translateY(-1px); }
+
+
+/* Primary (Live Demo) */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-start, #646cff), var(--accent-end, #535bf2));
+  color: #fff;
+  border-color: transparent;
+}
+.btn-primary:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+
+/* Outline (View Code) */
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-card-border));
+}
+.btn-outline:hover {
+  background: color-mix(in srgb, var(--color-card-bg) 85%, transparent);
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* Ghost (View Summary) */
+.btn-ghost {
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  border-color: var(--color-card-border);
+}
+.btn-ghost:hover {
+  background: color-mix(in srgb, var(--color-card-bg) 70%, var(--accent-start, #646cff));
+  color: #fff;
+}
+
+/* ===== Skills ===== */
+
+/* Uniform skill tiles */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;                     /* equal distance horizontally & vertically */
+  justify-content: center;       /* center the whole grid */
+}
+
+.skill-badge {
+  /* size of each tile */
+  width: 140px;
+  height: 64px;
+
+  /* center the label in the tile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* existing visual style */
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-card-border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  padding: 8px;                  /* lets long labels wrap cleanly */
+  box-sizing: border-box;
+
+  /* hover */
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* Responsive: slightly smaller tiles on narrow screens */
+@media (max-width: 520px) {
+  .skill-badge {
+    width: 120px;
+    height: 56px;
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+}
+
+/* Subtle text */
+.read-the-docs {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive tweaks ===== */
+
+@media (max-width: 600px) {
+  section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    max-width: 100%;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 1rem;
+  }
+  .card h3 {
+    font-size: 1rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Authoritative spacing for the projects grid — wins by specificity + order */
+.projects .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 3rem;   /* explicit column + row in case 'gap' is overridden */
+  row-gap: 1rem;
+}
