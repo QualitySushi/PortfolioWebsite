@@ -21,7 +21,7 @@ const Header: React.FC = () => {
       <div className="header-bar">
         <div className="header-center">
           <h1>Abdalla Elshafei</h1>
-          <p>Emerging Full Stack Developer</p>
+          <p>Software Engineer • DevOps-Oriented • Full-Stack Developer</p>
         </div>
 
         <button

@@ -9,46 +9,34 @@ import RayleighSolarTech from './components/RayleighSolarTech';
 
 const projects: Project[] = [
   {
-    title: 'Rayleigh Solar Tech (Capstone + WIL Projects)',
+    title: 'Rayleigh Solar Tech Capstone + WIL Projects (Python + PyQt6)',
     description:
-      'Co-Lead Developer – Built a photovoltaic Efficiency Estimator & G-Code Generator using PyQt6, pvlib, and NumPy. Implemented MVVM architecture and PXIe IV demo tool.',
+      'Co-lead developer on a production-adjacent photovoltaic efficiency estimator and G-Code generator built with PyQt6, pvlib, NumPy, and MVVM architecture for an industry partner.',
     private: true,
     summary: '/projects/rayleigh-solar-tech',
   },
   {
-    title: 'OSRS DPS Calculator (Personal Project)',
+    title: 'ScapeLab DPS Calculator (Full-Stack + DevOps)',
     description:
-      'Full Stack Developer – Built interactive combat simulator web app using React/TypeScript, Zustand, ShadCN, FastAPI, and SQLite. Features include loadout previews and real-time simulations.',
+      'Full-stack combat simulation platform using React/TypeScript, Zustand, ShadCN, FastAPI, and Azure SQL, with GitHub Actions CI/CD pipelines, automated data scrapers, and real-time loadout previews.',
     live: 'https://scapelab.net',
     code: 'https://github.com/QualitySushi/osrs-simulator',
   },
 ];
 
 const skillsList = [
-  'JavaScript (TypeScript)',
   'Python',
-  'Java',
-  'C#',
-  'C++',
-  'Kotlin',
-  'PHP',
-  'React.js',
-  'Angular',
-  'Bootstrap',
-  'Tailwind',
-  'Node.js',
-  'Express.js',
-  'ASP.NET',
+  'TypeScript',
+  'React',
   'FastAPI',
-  'FlaskAPI',
-  'PostgreSQL',
-  'MongoDB',
-  'MySQL',
-  'SQLite',
-  'Azure',
-  'CI/CD',
+  'PyQt6',
+  'Azure SQL',
+  'Linux',
+  'Bash',
   'Git/GitHub',
-  'Figma',
+  'CI/CD (GitHub Actions)',
+  'Unit & Integration Testing',
+  'System Design',
 ];
 
 const educationData = [
@@ -57,7 +45,7 @@ const educationData = [
     institution: 'Nova Scotia Community College (NSCC)',
     date: 'September 2023 → May 2025',
     description:
-      'Focused on full stack web/mobile development, API design, cloud deployment, and AI integration.',
+      'Comprehensive two-year program covering software engineering, systems, and applied project work. Core coursework included data structures, object-oriented programming (Java/C++/C#), C programming, databases, Linux and Windows administration, networking & security, systems analysis and design, project management, web and mobile development, and a final integrated project plus an industry work term.',
   },
 ];
 
@@ -80,7 +68,14 @@ function App() {
             }
           />
           <Route path="/projects/rayleigh-solar-tech" element={<RayleighSolarTech />} />
-          <Route path="*" element={<section className="container"><h2>Page Not Found</h2></section>} />
+          <Route
+            path="*"
+            element={
+              <section className="container">
+                <h2>Page Not Found</h2>
+              </section>
+            }
+          />
         </Routes>
       </main>
 

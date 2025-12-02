@@ -5,10 +5,15 @@ const About: React.FC = () => {
     <section className="about container">
       <h2>About Me</h2>
       <p>
-        I’m an emerging full-stack developer with hands-on experience designing and building modern web and desktop applications.
-        My recent work includes developing a photovoltaic efficiency estimator for an industry partner and a full-stack combat simulator web app built with React, FastAPI, and SQLite.
-        I enjoy crafting intuitive interfaces, architecting clean and maintainable systems, and solving real-world problems through code.
-        Passionate about learning, collaboration, and delivering reliable software from concept to deployment.
+          I`m a junior software engineer with hands-on experience developing full-stack applications, building automation pipelines, and designing production-adjacent tools. I enjoy working across the stack, from API design and data modelling to UI development and system integration. With a growing focus on DevOps, CI/CD, and reliable deployment workflows.
+
+          My recent work includes:
+
+          A full-stack combat simulator built with React, TypeScript, FastAPI and a custom data pipeline.
+
+          A bundle of engineering tools for photovoltaic performance modeling built with Python, PyQt6, pvlib, and MVVM architecture.
+
+          I`m passionate about building systems that are cleanly architected, well-tested, and reliable. I value learning, communication, and contributing to high-quality software used in real-world environments.
       </p>
       <div className="contact-info">
         <p>
@@ -18,6 +23,10 @@ const About: React.FC = () => {
         <p>
           <strong>Email:</strong>{' '}
           <a href="mailto:abdallaelshafei@gmail.com">abdallaelshafei@gmail.com</a>
+        </p>
+          <p>
+          <strong>LinkedIn:</strong>{' '}
+          <a href="https://linkedin.com/in/abdalla-elshafei/" target="_blank" rel="noopener noreferrer">linkedin.com/in/abdalla-elshafei/</a>
         </p>
       </div>
     </section>
