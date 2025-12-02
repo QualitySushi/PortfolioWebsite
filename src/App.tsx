@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Skills from './components/Skills';
 import Education from './components/Education';
-import Projects, { Project } from './components/Projects';
+import Projects, { type Project } from './components/Projects';
 import RayleighSolarTech from './components/RayleighSolarTech';
 
 const projects: Project[] = [
