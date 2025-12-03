@@ -22,6 +22,20 @@ const projects: Project[] = [
     live: 'https://scapelab.net',
     code: 'https://github.com/QualitySushi/osrs-simulator',
   },
+  {
+    title: 'AutoSort Pro (Windows Desktop Utility)',
+    description:
+      'A lightweight Windows folder automation tool built in Python and packaged with PyInstaller. Watches user-selected directories and automatically routes new files into subfolders based on simple, rule-based patterns.',
+    live: 'https://elshafei4.gumroad.com/l/autosortpro',
+    // add code repo here later if/when you make it public
+  },
+  {
+    title: 'AutoSort for VS Code (Workspace File Organizer Extension)',
+    description:
+      'A VS Code extension that listens to workspace file events and automatically moves new files into structured folders using rules defined in autosort.json or autosort.rules in settings. Designed for developers who generate lots of logs, test artifacts, and temporary files.',
+    live: 'https://marketplace.visualstudio.com/items?itemName=qualitysushi.autosort',
+    code: 'https://github.com/QualitySushi/vscode-autosort',
+  },
 ];
 
 const skillsList = [
@@ -37,6 +51,8 @@ const skillsList = [
   'CI/CD (GitHub Actions)',
   'Unit & Integration Testing',
   'System Design',
+  'Desktop Automation & Tooling',
+  'VS Code Extension Development',
 ];
 
 const educationData = [
@@ -67,7 +83,10 @@ function App() {
               </section>
             }
           />
-          <Route path="/projects/rayleigh-solar-tech" element={<RayleighSolarTech />} />
+          <Route
+            path="/projects/rayleigh-solar-tech"
+            element={<RayleighSolarTech />}
+          />
           <Route
             path="*"
             element={
